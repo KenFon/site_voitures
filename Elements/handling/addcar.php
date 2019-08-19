@@ -1,8 +1,10 @@
 <?php
+require_once "../function/function_upload.php";
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+require_once '../../class/Database.php';
+        
+$db = new Database;
 
+$db->add($parametre);
+header('Location:../admin.php');
+?>
