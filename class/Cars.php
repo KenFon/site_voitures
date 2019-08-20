@@ -17,9 +17,9 @@ class Cars extends Database {
     private function insert_voiture()
     {
         $prepare = $this->connect();
-        $prepare->prepare('INSERT INTO PRODUCT VALUE(NULL, :nom, :description, :description, :description, :description, :description, :description
-                :description',);
-        return $prepare;
+        $request = $prepare->prepare('INSERT INTO PRODUCT VALUE(NULL, :nom, :description, :description, :description, :description, :description, :description
+                :description, :description, :description, :description, :description');
+        return $request;
     }
     
     public function add_cars(array $parametre)
@@ -44,5 +44,20 @@ class Cars extends Database {
        $message = $this->is_ok($add);
        
        return $message;
+    }
+    
+    public function remove_cars($id)
+    {
+        
+    }
+    
+    public function update_cars(array $parametre)
+    {
+        
+    }
+    
+    public function show_cars(array $paremetre=[])
+    {
+        
     }
 }
