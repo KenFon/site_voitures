@@ -16,12 +16,9 @@ class Database {
     private $dbhost='127.0.0.1';
     private $dbpassword;
     
-    public function __construct(string $dbname, string $dbuser, string $dbhost, string $dbpassword) 
+    public function __construct() 
     {
-       $this->dbname=$dbname; 
-       $this->dbhost=$dbhost;
-       $this->dbuser=$dbuser;
-       $this->dbpassword=$dbpassword;
+        
     }
     
     protected function connect()
