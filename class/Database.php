@@ -11,9 +11,9 @@
 
 class Database {
     
-    private $dbname;
+    private $dbname='dbvoitures';
     private $dbuser;
-    private $dbhost;
+    private $dbhost='127.0.0.1';
     private $dbpassword;
     
     public function __construct(string $dbname, string $dbuser, string $dbhost, string $dbpassword) 
@@ -24,38 +24,25 @@ class Database {
        $this->dbpassword=$dbpassword;
     }
     
-    private function connect()
+    protected function connect()
     {
-        $pdo = new PDO("'mysql:host=$this->dbhost;dbname=$this->dbname','$this->dbname', '$this->dbpassword'");
+        $pdo = new PDO("'mysql:host=$this->dbhost;dbname=$this->dbname','$this->dbuser', '$this->dbpassword'");
         return $pdo;
     }
     
-    private function prepare()
-    {
-        $prepare = $this->connect();
-        $prepare->prepare('INSERT INTO PRODUCT VALUE(NULL, :nom, :description ect ect');
-        return $prepare;
-    }
     
-    private function is_ok($add)
+    protected function is_ok($request)
     {
-        $insertIsOk = $products->execute();
+        $insertIsOk = $request->execute();
         if($insertIsOk){
             $message="c'est ok";
         }else{
             $message="c'est pas ok";
         }
+        return $message;        
     }
     
-    public function add($parametre,$parametre)
-    {
-       $add = $this->prepare();
-       $add->binValue('nom', $parametre1, PDO::PARAM_STR_CHAR);
-       
-       $message = $this->is_ok($add);
-       
-       return $message;
-    }
+
 }
     
 
