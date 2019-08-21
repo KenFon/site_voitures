@@ -12,9 +12,9 @@
 class Database {
     
     private $dbname='dbvoitures';
-    private $dbuser;
+    private $dbuser='root';
     private $dbhost='127.0.0.1';
-    private $dbpassword;
+    private $dbpassword='azer';
     
     public function __construct() 
     {
@@ -27,7 +27,11 @@ class Database {
         return $pdo;
     }
     
-    
+    /*
+     *  @param string
+     * Envoie la requete et la confirme
+     */
+
     protected function is_ok($request)
     {
         $insertIsOk = $request->execute();

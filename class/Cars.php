@@ -12,33 +12,29 @@
  * @author ken
  */
 class Cars extends Database {
-    
-    
-    private function insert_voiture()
-    {
-        $prepare = $this->connect();
-        $request = $prepare->prepare('INSERT INTO PRODUCT VALUE(NULL, :nom, :description, :description, :description, :description, :description, :description
-                :description, :description, :description, :description, :description');
-        return $request;
-    }
-    
+
+    /*
+     *  @param array
+     *  Ajoute une voiture.
+     */
     public function add_cars(array $parametre)
     {
-       $add = $this->insert_voiture();
+        $prepare = $this->connect();
+        $add = $prepare->prepare('INSERT INTO voitures VALUE(NULL, :marque, :model, :prix, :description, :garantie, :nbchevaux, :km, :couleur, :type, :carburant, :annee, :slug, :photo');
        
-       $add->binValue('nom', $parametre[0], PDO::PARAM_STR_CHAR);
-       $add->binValue('nom', $parametre[0], PDO::PARAM_STR_CHAR);
-       $add->binValue('nom', $parametre[1], PDO::PARAM_STR_CHAR);
-       $add->binValue('nom', $parametre[2], PDO::PARAM_STR_CHAR);
-       $add->binValue('nom', $parametre[3], PDO::PARAM_STR_CHAR);
-       $add->binValue('nom', $parametre[4], PDO::PARAM_STR_CHAR);
-       $add->binValue('nom', $parametre[5], PDO::PARAM_STR_CHAR);
-       $add->binValue('nom', $parametre[6], PDO::PARAM_STR_CHAR);
-       $add->binValue('nom', $parametre[7], PDO::PARAM_STR_CHAR);
-       $add->binValue('nom', $parametre[8], PDO::PARAM_STR_CHAR);
-       $add->binValue('nom', $parametre[9], PDO::PARAM_STR_CHAR);
-       $add->binValue('nom', $parametre[10], PDO::PARAM_STR_CHAR);
-       $add->binValue('nom', $parametre[11], PDO::PARAM_STR_CHAR);
+       $add->bindValue('marque', $parametre[0], PDO::PARAM_STR_CHAR);
+       $add->bindValue('model', $parametre[1], PDO::PARAM_STR_CHAR);
+       $add->bindValue('prix', $parametre[2], PDO::PARAM_INT);
+       $add->bindValue('description', $parametre[3], PDO::PARAM_STR_CHAR);
+       $add->bindValue('garantie', $parametre[4], PDO::PARAM_INT);
+       $add->bindValue('nbchevaux', $parametre[5], PDO::PARAM_INT);
+       $add->bindValue('km', $parametre[6], PDO::PARAM_INT);
+       $add->bindValue('couleur', $parametre[7], PDO::PARAM_STR_CHAR);
+       $add->bindValue('type', $parametre[8], PDO::PARAM_STR_CHAR);
+       $add->bindValue('carburant', $parametre[9], PDO::PARAM_INT);
+       $add->bindValue('annee', $parametre[10], PDO::PARAM_INT);
+       $add->bindValue('slug', $parametre[11], PDO::PARAM_STR_CHAR);
+       $add->bindValue('photo', $parametre[12], PDO::PARAM_STR_CHAR);
 
        
        $message = $this->is_ok($add);
@@ -48,7 +44,9 @@ class Cars extends Database {
     
     public function remove_cars($id)
     {
-        
+       $prepare = $this->connect();
+       $remove = $prepare->prepare('DELETE FROM voitures WHERE id=:id');
+       $remove->execute(array(':id' => $id));
     }
     
     public function update_cars(array $parametre)
