@@ -1,11 +1,12 @@
 <?php
 
 $search[
-  $marques => $_POST['marque'];
-  $km => $_POST['km'];
-  $color => $_POST['couleur'];
-  $carbur => $_POST['carburant'];
+  'marques' => $_POST['marque'];
+  'km' => $_POST['km'];
+  'couleur' => $_POST['couleur'];
+  'carburant' => $_POST['carburant'];
 ];
+
 ?>
 
 <div class="resultat">
