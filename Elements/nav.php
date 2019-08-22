@@ -50,6 +50,16 @@
           <button type="submit"/>Rechercher</button>
         </div>
         </form>
+<div id ="connexion">
+  <div>
+  <?php if (isset($_SESSION['connecte'])&& $_SESSION['connecte']==1):?>
+    <button type="submit" class="bouton">Deconnexion</button>
+    <?php else : ?>
 
+    <button type="submit" class="boutonsucces">Se connecter</button>
+    <button type="submit" class="boutonsucces">s'inscrire</button>
+    <?php endif ?>
+</div>
+</div>
       </div>
     </div>
