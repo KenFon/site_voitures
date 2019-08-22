@@ -25,8 +25,8 @@ body{
 }
 .categorie{
   /* Elodie : concerne le formulaire (catégories) */
-  width: 50vh;
-  height: 2vh;
+  width: 80vh;
+  height: 6vh;
   background-color: var(--grey);
   display: flex;
   justify-content: center;
@@ -73,3 +73,25 @@ body{
       Fin du CSS d'Elodie sur le footer, la nav et le header
                   (juste taille et couleur)
 ****************************************************************** */
+
+/* **************************************
+    Elo : commencement css galerie
+************************************** */
+form>div {
+  margin-top: 1vmax;
+}
+.input-field{
+  margin-top: 1.5vmax !important;
+}
+.main_galerie{
+  margin-top: 5vh;
+}
+.perso{
+  background-color:var(--grey);
+}
+.button{
+  background-color: var(--blue);
+}
+/* **************************************
+    Elo : fin css
+************************************** */
