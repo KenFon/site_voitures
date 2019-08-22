@@ -1,10 +1,75 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 19 août 2019, 22:02:32
-    Author     : ken
-*/
-
+/* ********************************************************
+                    Elodie, footer
+            faire variables couleurs avec chartes
+******************************************************** */
+:root{
+  --darkBrown:#4a3332;
+  --caramel:#8F4509;
+  --blue:#3d5a98;
+  --darkGrey:#737373;
+  --grey:#d9d9d9;
+}
+body{
+  padding:0;
+  margin:0;
+}
+.navbar{
+  /*Elodie : la navbar concerne le header, j'ai juste placé et coloré */
+  height: 9vh;
+  width: 100%;
+  background-color:var(--darkBrown);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.categorie{
+  /* Elodie : concerne le formulaire (catégories) */
+  width: 50vh;
+  height: 2vh;
+  background-color: var(--grey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8vh;
+}
+.main{
+  /* Elodie: Juste la taille du main pour que mes nav et footer soient bien placées */
+  width: 100%;
+  height: 82vh;
+}
+.footernav{
+  /* Elodie : concerne le footer */
+  height: 9vh;
+  width: 100%;
+  background-color:var(--darkBrown);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.adress{
+  /* Elodie : concerne l'adresse sur le footer, ainsi que les icone reseaux */
+  width: 50%;
+  height: 9vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.reseau{
+  /* Elodie : taille des icones reseaux sociaux */
+  width: 5vh;
+  height: 5vh;
+}
+.position{
+  /* Elodie : concerne la position des elements du footer */
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+/* ******************************************************************
+      Fin du CSS d'Elodie sur le footer, la nav et le header
+                  (juste taille et couleur)
+****************************************************************** */
