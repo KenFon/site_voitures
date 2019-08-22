@@ -11,7 +11,6 @@
         .content{
             display:none;
         }
-
         .content.active{
             display:block;
         }
@@ -34,7 +33,7 @@
 
     <div class="col s8 row content active" id="add_car">
         <h1>Ajouter un véhicule</h1>
-        <form class="col s12" method="POST" action="../elements/handling/addcar.php" enctype="multipart/form-data">
+        <form class="col s12" method="POST" action="../Elements/handling/addcar.php" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s4">
                     <input placeholder="Marque" id="marque" type="text" class="validate" name="marque">
@@ -234,16 +233,19 @@
             <?php
                 require_once '../class/Cars.php';
                 $voitures = new Cars;
-                $voitures->show_cars([])
+
+                $test = $voitures->show_cars();
+
+
             ?>
-            <?php foreach ($voitures as $voiture) :?>
+            <?php foreach ($test as $voiture) :?>
                 <div class="col s12 row">
                     <div class="supp_voiture col s10">
-                        <?= $voiture->marque - $voiture->model - $voiture->prix ?>
+                        <?= $voiture->marque, $voiture->model, $voiture->prix ?>
                     </div>
                     <div class="col s2">
                         <form method="post" action="../Elements/handling/removecar.php">
-                            <input type="hidden" value="<?= $voiture->id ?>">
+                            <input type="hidden" value="<?= $voiture->id ?>" name='id'>
                             <button type="submit">Supprimer</button>
                         </form>
 
@@ -263,7 +265,6 @@
         var elems = document.querySelectorAll('select');
         var instances = M.FormSelect.init(elems, {});
     });
-
     (function(){
         var menu = document.querySelector('.menu_admin');
         var as = menu.querySelectorAll('li');
@@ -272,11 +273,8 @@
                if(this.classList.contains('active')){
                    return false;
                }
-
                menu.querySelector('li .active').classList.remove('active');
-
                this.firstChild.classList.add('active');
-
                document.querySelector('.content.active').classList.remove('active');
                var attrHref = this.querySelector('a').getAttribute('href').split("#");
                document.getElementById(attrHref[1]).classList.add('active');
