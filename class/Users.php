@@ -11,14 +11,14 @@
 
 class Users extends Database {
 
-	public function addCompte($nom, $prenom, $adresse, $mail, $password) {
+	public function addCompte($nom, $prenom, $adresse, $photo, $mail, $password) {
 		$prepare = $this->connect();
 		$add = $prepare->prepare('INSERT INTO users VALUE (null, :nom, :prenom, :adresse, :photo, :statue, :mail, :password, :whishlist)');
 		
 		$add->bindValue('nom', $nom, PDO::PARAM_STR_CHAR);
 		$add->bindValue('prenom', $prenom, PDO::PARAM_STR_CHAR);
 		$add->bindValue('adresse', $adresse, PDO::PARAM_STR_CHAR);
-		$add->bindValue('photo', "lol", PDO::PARAM_STR_CHAR);
+		$add->bindValue('photo', $photo, PDO::PARAM_STR_CHAR);
 		$add->bindValue('statue', 1, PDO::PARAM_INT);
 		$add->bindValue('mail', $mail, PDO::PARAM_STR_CHAR);
 		$add->bindValue('password', $password, PDO::PARAM_STR_CHAR);
@@ -30,22 +30,33 @@ class Users extends Database {
 	}
 
 	public function verifConnexion($mail, $password) {
-		$mail = 'mail="'.$mail.'"';
 		$usersInfo = $this->infoUsers($mail);
-		if (empty($usersInfo)) {
-			echo 'mauvais email/email non existant';
+		if ($mail == NULL || $password == NULL) {
+			$_SESSION['erreur'] = "champ non remplis";
+			header("Location:../../pages/connexion.php");
+		}
+		else if (empty($usersInfo)) {
+			$_SESSION['erreur'] = "email invalide";
+			header("Location:../../pages/connexion.php");
 		}
 		else if (password_verify($password,$usersInfo['password'])) {
-			echo $usersInfo['password'];
-			echo $usersInfo['id'];
-			$_SESSION['users'] = $usersInfo['id'];
+			$_SESSION['idUsers'] = $usersInfo['id'];
+			$_SESSION['erreur'] = NULL;
+			header("Location:../../pages/index.php");
 		}
 		else {
-			echo "mauvais mot de passe";
+			$_SESSION['erreur'] = "Mot de passe incorrect";
+			header("Location:../../pages/connexion.php");
 		}
 	}
 
 	public function infoUsers($info) {
+		if (preg_match("#^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]{2,5}$#",$info)) {
+			$info = 'mail="'.$info.'"';
+		}
+		else {
+			$info = 'id="'.$info.'"';
+		}
 		$users = $this->connect();
 		$usersInfo = $users->query('SELECT * FROM users WHERE '.$info); 
 		$usersInfo = $usersInfo->fetch();
@@ -53,7 +64,7 @@ class Users extends Database {
 	}
 
 	public function ajoutWishlist($idVoiture) {
-		$id = 'id="'.$_SESSION['idUsers'].'"';
+		$id = $_SESSION['idUsers'];
 		$usersInfo = $this->infoUsers($id);
 		$usersInfo = $usersInfo['wishlist'];
 		
@@ -61,15 +72,18 @@ class Users extends Database {
 		$id = $_SESSION['idUsers'];
 		if ($usersInfo!=NULL) {
 			$idVoiture = $usersInfo .".". $idVoiture;
-			echo 'ok';
-			echo $idVoiture;
 		}
 		$sth = $users->prepare('UPDATE users SET wishlist="'.$idVoiture.'" WHERE id="'.$id.'"');
 		$sth->execute();
 	}
 
+	/*
+	* supprime une voiture de la Wishlist
+	*
+	*/
+
 	public function modificationWishlist($idVoiture) {
-		$id = 'id="'.$_SESSION['idUsers'].'"';
+		$id = $_SESSION['idUsers'];
 		$usersInfo = $this->infoUsers($id);
 		$usersInfo = $usersInfo['wishlist'];
 		$wishlist = explode(".", $usersInfo);
@@ -86,7 +100,12 @@ class Users extends Database {
 		$sth->execute();
 	}
 
-	public function suppressionWishlist() {
+	/*
+	* supprime tout la Wishlist
+	*
+	*/
+
+	public function suppressionWishlist($idVoiture) {
 		$id = $_SESSION['idUsers'];
 		$users = $this->connect();
 		$sth = $users->prepare('UPDATE users SET wishlist=NULL WHERE id="'.$id.'"');
@@ -94,30 +113,19 @@ class Users extends Database {
 	}
 
 	public function historique($historique) {
-
-		$_SESSION['historique'] = "1.2.3";
 		if (empty($_SESSION['historique'])) {
 			$_SESSION['historique'] = $historique;
-			echo $_SESSION['historique'];
 		}
 		else {
 			$sHistorique = $_SESSION['historique'];
 			$tableauHistorique = explode(".", $sHistorique);
-			print_r($tableauHistorique);
-			$test = count($tableauHistorique);
-			echo $test;
 			if (count($tableauHistorique)>2) {
-				echo "au dessus de trois";
 				array_shift($tableauHistorique);
-				print_r($tableauHistorique);
 				$sHistorique = implode(".", $tableauHistorique);
-				$historique = 1;
-				$sHistorique = $sHistorique.".".$historique;
-				echo $sHistorique;
+				$_SESSION['historique'] = $sHistorique.".".$historique;
 			}
 			else {
-				$sHistorique = $sHistorique.".".$historique;
-				echo "en dessous de trois";
+				$_SESSION['historique'] = $historique.".".$sHistorique;
 			}
 		}
 	}
