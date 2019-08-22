@@ -1,9 +1,11 @@
 <?php
 
-  $marques = $_POST['marque'];
-  $km = $_POST['km'];
-  $color = $_POST['couleur'];
-  $carbur = $_POST['carburant'];
+$search[
+  $marques => $_POST['marque'];
+  $km => $_POST['km'];
+  $color => $_POST['couleur'];
+  $carbur => $_POST['carburant'];
+];
 ?>
 
 <div class="resultat">
