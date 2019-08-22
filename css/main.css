@@ -95,3 +95,109 @@ form>div {
 /* **************************************
     Elo : fin css
 ************************************** */
+body{
+    padding:0;
+    margin:0;
+    background-color: #4a3332
+}
+
+.owl-item {
+    width: 100wh;
+    height: 80vh;
+    
+}
+.owl-item > div {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+}
+
+
+.entete{
+  background-color: #4a3332;
+  width:100%;
+  height:9vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around ;
+  align-items: center;
+  margin-top:0;
+}
+
+p{
+  color:white;
+}
+
+.t1{
+  position: absolute;
+  left : 50%;
+  bottom:0%;
+  color:white;
+  font-size : 30px;
+}
+
+.t2{
+  position: absolute;
+  left : 50%;
+  bottom:0%;
+  color:white;
+  font-size : 30px;
+}
+
+.t3{
+  position: absolute;
+  left : 50%;
+  bottom:0%;
+  color:white;
+  font-size : 30px;
+}
+
+.t4{
+  position: absolute;
+  left : 50%;
+  bottom:0%;
+  color:white;
+  font-size : 30px;
+}
+
+.t5{
+  position: absolute;
+  left : 50%;
+  bottom:0%;
+  color:white;
+  font-size : 30px;
+}
+
+.t6{
+  position: absolute;
+  left : 50%;
+  bottom:0%;
+  color:white;
+  font-size : 30px;
+}
+
+
+
+
+
+
+.owl-prev{
+  color:#8F4509 !important;
+  transform:scale(7);
+  position: absolute;
+  left:2%;
+  top: 50%;
+}
+
+.owl-next{
+  color:#8F4509 !important;
+  transform:scale(7);
+  position: absolute;
+  right:2%;
+  top: 50%;
+}
+
+.owl-dots{
+  display: none;
+}
