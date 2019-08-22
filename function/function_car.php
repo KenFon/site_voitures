@@ -1,4 +1,7 @@
 <?php
+
+include_once 'function_img.php';
+
 /*
  * @param array
  * fonction qui traite l'ajout d'une voiture.
@@ -6,22 +9,35 @@
 
 function treatment_cars($array){
     $array_treaty = [];
-    $treaty_marque = strtoupper($array[0]);
-    $treaty_model = ucfirst($array[1]);
-    $treaty_prix = floatval($array[2]);
-    $treaty_desc = $array[3];
-    $treaty_garantie = $array[4];
-    $treaty_nbchevaux = $array[5];
-    $treaty_km = $array[6];
-    $treaty_color=$array[7];
-    $treaty_type=$array[8];
-    $treaty_carburant= $array[9];
-    $treaty_annee=$array[10];
+    $treaty_marque = strtoupper($array['marque']);
+    $treaty_model = ucfirst($array['model']);
+    $treaty_prix = intval($array['prix']);
+    $treaty_desc = $array['desc'];
+    $treaty_garantie = intval($array['garantie']);
+    $treaty_nbchevaux = intval($array['nbchevaux']);
+    $treaty_km = intval($array['km']);
+    $treaty_color= $array['couleur'];
+    $treaty_type= $array['type'];
+    $treaty_carburant= intval($array['carburant']);
+    $treaty_annee= intval($array['annee']);
     $treaty_slug = random_string();
-    $treaty_img=$array[11];
+    $treaty_img= $array['img'];
 
-    $array_treaty = [$treaty_marque, $treaty_model, $treaty_prix, $treaty_desc, $treaty_garantie, $treaty_nbchevaux, $treaty_km, $treaty_color, $treaty_type, $treaty_carburant,
-        $treaty_annee, $treaty_slug, $treaty_img];
+    $array_treaty = [
+        'marque' => $treaty_marque,
+        'model' => $treaty_model,
+        'prix' => $treaty_prix,
+        'desc' => $treaty_desc,
+        'garantie' => $treaty_garantie,
+        'nbchevaux' => $treaty_nbchevaux,
+        'km' => $treaty_km,
+        'color' => $treaty_color,
+        'type' => $treaty_type,
+        'carburant' => $treaty_carburant,
+        'annee' => $treaty_annee,
+        'slug' => $treaty_slug,
+        'img' => $treaty_img
+    ];
     return $array_treaty;
 }
 
