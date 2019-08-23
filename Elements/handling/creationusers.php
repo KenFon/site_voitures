@@ -23,7 +23,7 @@ if (empty($emailVerif)) {
 	header("Location:../../pages/inscription.php");
 }
 else {
-	$Photo = verif_img($Photo, "../../img/photo_profil/");
+	$Photo = verif_img($Photo, "img/photo_profil/");
 	$message = $users->addCompte($Nom, $Prenom, $Adresse, $Photo, $Mail, $Password);
 }
  ?>
