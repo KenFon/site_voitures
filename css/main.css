@@ -211,3 +211,59 @@ p{
 .owl-dots{
   display: none;
 }
+
+/* ********************************************************
+                    Flavian, page connexion
+******************************************************** */
+
+body {
+	margin: 0;
+	padding: 0;
+}
+.divConnexion {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.content {
+	display: none;
+}
+.active {
+	display: block;
+}
+.formConnexion {
+	display: flex;
+	flex-direction: column;	
+	align-items: center;
+}
+li {
+	list-style-type: none;
+}
+.inputFormulaireConnexion {
+	margin-bottom: 2vw;
+	border-top: 0px solid transparent;
+	border-left: 0px solid transparent;
+	border-right: 0px solid transparent;
+	border-bottom: 4px solid #3d5a98;
+	width: 20vw;
+}
+.boutonFormulaireConnexion {
+	margin-top: 6vh;
+	width: 10vw;
+	border-top-right-radius: 25% 50%;
+	border-bottom-right-radius: 25% 50%;
+	border-top-left-radius: 25% 50%;
+	border-bottom-left-radius: 25% 50%;
+	background-color: #8F4509;
+	height: 6vh;
+	color: white;
+}
+::-webkit-input-placeholder {
+   color: #3d5a98;
+}
+img {
+	height: 20vh !important;
+	border-radius: 50%;
+}
+
