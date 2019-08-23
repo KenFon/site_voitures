@@ -7,7 +7,7 @@ require_once '../../function/function_car.php';
 
 require_once '../../function/function_img.php';
 
-$path_img = verif_img($_FILES['img'], '../../img/photo_voiture');
+$path_img = verif_img($_FILES['img'], 'img/photo_voiture/');
 if($path_img != '../../img/photo_voiture/'.$_FILES['img']['name']){
     echo "echec, l'image existe déjà";
     exit();
