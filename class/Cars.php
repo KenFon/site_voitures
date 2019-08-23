@@ -80,6 +80,11 @@ class Cars extends Database
                   $allvoitures = $this->facile_affich($phrase);
                   return $allvoitures;
                 }
+                if($columns == 'id'){
+                    $phrase = $phrase . "id = '$donnees";
+                    $allvoitures = $this->facile_affich($phrase);
+                    return $allvoitures;
+                }
                 if ($columns == 'marque') {
                     $part['request_marque'] = "marque = '$donnees'";
                 }
