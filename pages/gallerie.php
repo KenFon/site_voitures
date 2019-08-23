@@ -1,95 +1,25 @@
 <?php include "../Elements/nav.php"?>
 
+<?php $test = $voitures->show_cars(); ?>
+
   <main class="row main_galerie">
 
+<?php foreach ($test as $voiture) :?>
     <div class="row col m3 s12">
-
       <div class="col s12">
         <div class="card">
           <div class="card-image">
-            <img src="../img/photo_voiture/ford.jpg">
-            <span class="card-title">Ford</span>
-            <a class="btn-floating halfway-fab waves-effect waves-light grey"><i class="material-icons button">+</i></a>
+            <img src="../<?=$voiture->img?>">
+            <span class="card-title"><?=$voiture->model?></span>
+            <a class="btn-floating halfway-fab waves-effect waves-light grey" href='product.php?slug=<?= voiture->slug?>'><i class="material-icons button">+</i></a>
           </div>
           <div class="card-content perso">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="row col s12 m3">
-      <div class="col s12">
-        <div class="card">
-          <div class="card-image">
-            <img src="../img/photo_voiture/ford.jpg">
-            <span class="card-title ">Ford</span>
-            <a class="btn-floating halfway-fab waves-effect waves-light grey"><i class="material-icons button">+</i></a>
-          </div>
-          <div class="card-content perso">
-            <p>I am a very simple card. I am good at containing small.</p>
+            <p><?=$voiture->description?></p>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="row col s12 m3">
-          <div class="col s12">
-            <div class="card">
-              <div class="card-image">
-                <img src="../img/photo_voiture/ford.jpg">
-                <span class="card-title">Card Title</span>
-                <a class="btn-floating halfway-fab waves-effect waves-light grey"><i class="material-icons button">+</i></a>
-              </div>
-              <div class="card-content perso">
-                <p>blahlblkdojgfueh.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row col s12 m3">
-              <div class="col s12">
-                <div class="card">
-                  <div class="card-image">
-                    <img src="../img/photo_voiture/ford.jpg">
-                    <span class="card-title">Card Title</span>
-                    <a class="btn-floating halfway-fab waves-effect waves-light grey"><i class="material-icons button">+</i></a>
-                  </div>
-                  <div class="card-content perso">
-                    <p>blahlblkdojgfueh.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row col s12 m3">
-                  <div class="col s12">
-                    <div class="card">
-                      <div class="card-image">
-                        <img src="../img/photo_voiture/ford.jpg">
-                        <span class="card-title">Card Title</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light grey"><i class="material-icons button">+</i></a>
-                      </div>
-                      <div class="card-content perso">
-                        <p>blahlblkdojgfueh.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row col s12 m3">
-                      <div class="col s12">
-                        <div class="card">
-                          <div class="card-image">
-                            <img src="../img/photo_voiture/ford.jpg">
-                            <span class="card-title">Card Title</span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light grey"><i class="material-icons button">+</i></a>
-                          </div>
-                          <div class="card-content perso">
-                            <p>blahlblkdojgfueh.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+  <?php endforeach; ?>
 </main>
 
 <script>
