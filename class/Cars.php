@@ -74,6 +74,12 @@ class Cars extends Database
             $phrase = 'SELECT * FROM voitures WHERE ';
             $part = [];
             foreach ($parametre as $columns => $donnees) {
+                if ($columns == "id_cars"){
+                  $part_phrase = 'id IN ('.$donnees.')';
+                  $phrase = $phrase . $part_phrase;  
+                  $allvoitures = $this->facile_affich($phrase);
+                  return $allvoitures;
+                }
                 if ($columns == 'marque') {
                     $part['request_marque'] = "marque = '$donnees'";
                 }
