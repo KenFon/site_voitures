@@ -71,7 +71,7 @@ class Users extends Database {
 		$users = $this->connect();
 		$id = $_SESSION['idUsers'];
 		if ($usersInfo!=NULL) {
-			$idVoiture = $usersInfo .".". $idVoiture;
+			$idVoiture = $usersInfo .",". $idVoiture;
 		}
 		$sth = $users->prepare('UPDATE users SET wishlist="'.$idVoiture.'" WHERE id="'.$id.'"');
 		$sth->execute();
@@ -86,13 +86,13 @@ class Users extends Database {
 		$id = $_SESSION['idUsers'];
 		$usersInfo = $this->infoUsers($id);
 		$usersInfo = $usersInfo['wishlist'];
-		$wishlist = explode(".", $usersInfo);
+		$wishlist = explode(",", $usersInfo);
 		foreach ($wishlist as $value) {
 			if ($value == $idVoiture) {
 				unset($wishlist[array_search($idVoiture, $wishlist)]);
 			}
 		}
-		$wishlist = implode(".",$wishlist);
+		$wishlist = implode(",",$wishlist);
 
 		$users = $this->connect();
 		$id = $_SESSION['idUsers'];
