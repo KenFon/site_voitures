@@ -1,4 +1,6 @@
 <?php
+// namespace App;
+// use \PDO;
 
 /**
  * Description of Database
@@ -8,13 +10,12 @@
  * @author ken
  * 
  */
-
 class Database {
     
     private $dbname='dbvoitures';
     private $dbuser='root';
-    private $dbhost='127.0.0.1';
-    private $dbpassword='azer';
+    private $dbhost='localhost';
+    private $dbpassword='coucou';
     
     public function __construct() 
     {
@@ -23,15 +24,11 @@ class Database {
     
     protected function connect()
     {
-        $pdo = new PDO("'mysql:host=$this->dbhost;dbname=$this->dbname','$this->dbuser', '$this->dbpassword'");
+        $pdo = new PDO("mysql:host=$this->dbhost;dbname=$this->dbname","$this->dbuser", "$this->dbpassword");
         return $pdo;
     }
     
-    /*
-     *  @param string
-     * Envoie la requete et la confirme
-     */
-
+    
     protected function is_ok($request)
     {
         $insertIsOk = $request->execute();
@@ -43,7 +40,6 @@ class Database {
         return $message;        
     }
     
-
 }
     
 
