@@ -1,10 +1,9 @@
 <?php include '../Elements/header.php';
 
-require_once '../class/Database.php';
-require_once '../class/Users.php';
-session_start();
 $users = new Users;
 $infoUsers = $users->infoUsers($_SESSION['idUsers']);
+$cars = new Cars;
+
 ?>
 
 <body>
@@ -23,11 +22,25 @@ $infoUsers = $users->infoUsers($_SESSION['idUsers']);
 		</div>
 		<div class="col s8 content" id="wishlist">
 			<h2>Wishlist</h2>
-			<p><?= $infoUsers['wishlist']; ?></p>
+			
+			<?php $infoCars = $cars->show_cars(["id_cars" => $infoUsers['wishlist']]);
+			foreach ($infoCars as $infocars) :?>
+			<img src="../<?= $infocars->photo;?>">
+			<p>	Marque : <?= $infocars->marque;?> Model : <?= $infocars->model;?> </p>
+			<?php endforeach; ?>
+				
+			
+			
 		</div>
 		<div class="col s8 content" id="historique">
 			<h2>Historique</h2>
-			<p><?php if (empty($_SESSION['historique'])) { echo 'Aucun historique'; } else { echo $_SESSION['historique']; } ?></p>
+			<?php if (empty($_SESSION['historique'])) { echo '<p>Aucun historique</p>'; } 
+			else { 
+			$infoCars = $cars->show_cars(["id_cars" => $_SESSION['historique']]);
+			foreach ($infoCars as $infocars) :?>
+			<img src="<?= $infocars->photo;?>">
+			<p>	Marque : <?= $infocars->marque;?> Model : <?= $infocars->model;?> </p>
+			<?php endforeach; } ?>
 		</div>
 	</div>
 
